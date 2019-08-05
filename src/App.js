@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import Topic from "./pages/Detail";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import Layout from "./components/layout/Layout";
 
-function App() {
+import GithubState from "./context/app/AppState";
+
+import "./App.css";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GithubState>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/topics/:name" component={Topic} />
+            <Route component={NotFound} />
+          </Switch>
+        </Layout>
+      </Router>
+    </GithubState>
   );
-}
+};
 
 export default App;
