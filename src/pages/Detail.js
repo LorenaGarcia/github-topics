@@ -3,7 +3,7 @@ import Loading from "../components/layout/Loading";
 import { Link, Redirect } from "react-router-dom";
 import AppContext from "../context/app/AppContext";
 
-import { Container, Header, Button } from "semantic-ui-react";
+import { Container, Header, Button, Segment } from "semantic-ui-react";
 
 const Detail = ({ match }) => {
   const appContext = useContext(AppContext);
@@ -42,14 +42,12 @@ const Detail = ({ match }) => {
         />
       </Link>
       <Container fluid>
-        <Header as="h2">{display_name}</Header>
+        <Header as="h2" >{display_name}</Header>
+        <Segment attached>
         <p>
           <strong>Created By:</strong> {created_by}
         </p>
-        <p>
-          <strong>Description: </strong>
-          {description}
-        </p>
+        
         <p>
           <strong>Created:</strong> {created_at}
         </p>
@@ -59,9 +57,27 @@ const Detail = ({ match }) => {
         <p>
           <strong>Released:</strong> {released}
         </p>
+
         <p>
-          <strong>Score:</strong> {score}
+          <strong>Description: </strong>
+          {description}
         </p>
+        <p>
+
+          <Button
+          basic
+          color="yellow"
+          content="Score"
+          icon="star"
+          label={{
+            basic: true,
+            color: "black",
+            pointing: "left",
+            content: `${score}`
+          }}
+        />
+        </p>
+        </Segment>
       </Container>
     </Fragment>
   );

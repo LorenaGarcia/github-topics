@@ -16,6 +16,7 @@ const ListPagination = () => {
   return (
     <Pagination
       floated="right"
+      color='teal'
       activePage={currentPage}
       onPageChange={handlePaginationChange}
       totalPages={totalPages}
